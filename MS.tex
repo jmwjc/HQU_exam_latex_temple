@@ -1,0 +1,57 @@
+% ============================================
+% 华侨大学考试卷主文件
+% 使用方式：
+%   \documentclass[选项]{hqu-exam}
+% 选项：
+%   - graduate      : 研究生试卷（默认）
+%   - undergraduate : 本科生试卷
+%   - answers       : 生成参考答案（A3）
+%   - version=A    : A卷（默认）
+%   - version=B    : B卷
+% 示例：
+%   \documentclass[graduate,version=A]{hqu-exam}     % 研究生A卷考试卷
+%   \documentclass[graduate,answers,version=B]{hqu-exam} % 研究生B卷参考答案
+% ============================================
+
+% ---------- 选择模板类型 ----------
+\documentclass[graduate,version=B]{hqu-exam}
+
+% ---------- 基本信息 ----------
+\def\year{2025-2026}
+\def\semester{第一学期}
+\def\college{土木工程学院}
+\def\course{弹塑性力学与有限元}
+\def\date{2026.1.7}
+
+\begin{document}
+
+% ---------- 导入题目 ----------
+% A卷
+\begin{versionA}
+\begin{page1}
+\input{questions/q1}
+\input{questions/q2}
+\input{questions/q3}
+\end{page1}
+
+\begin{page2}
+\input{questions/q4}
+\input{questions/q5}
+\end{page2}
+\end{versionA}
+
+% B卷
+\begin{versionB}
+\begin{page1}
+\input{questions/q1}
+\input{questions/q2}
+\input{questions/q3}
+\end{page1}
+
+\begin{page2}
+\input{questions/q4}
+\input{questions/q5}
+\end{page2}
+\end{versionB}
+
+\end{document}

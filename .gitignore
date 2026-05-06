@@ -1,0 +1,32 @@
+# LaTeX auxiliary files
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.lot
+*.lof
+*.ind
+*.idx
+*.ilg
+*.synctex
+*.synctex.gz
+*.xdv
+
+# PDF output
+*.pdf
+
+# Build artifacts
+.aux/
+*.fdb_latexmk
+*.fls
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~

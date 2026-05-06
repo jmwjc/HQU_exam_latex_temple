@@ -1,0 +1,68 @@
+\begin{question}{0.2}
+    (20分) 考虑一维应力状态下的弹塑性材料，弹性模量为 \(E\)，初始屈服应力为 \(\sigma_Y\)。材料服从各向同性线性硬化，即屈服后的应力-塑性应变关系为：
+
+    \[
+\sigma = \sigma_Y + K \varepsilon^p
+\]
+
+其中 \(K\) 为塑性模量，\(\varepsilon^p\) 为塑性应变。屈服函数为：
+
+\[
+f(\sigma, \varepsilon^p) = |\sigma| - (\sigma_Y + K \varepsilon^p)
+\]
+
+假设材料受单调拉伸（\(\sigma > 0\)），因此屈服函数简化为：
+
+\[
+f = \sigma - (\sigma_Y + K \varepsilon^p)
+\]
+
+(1) 写出弹性本构关系、塑性流动法则（关联流动, Associative flow rule）和一致性条件。
+
+(2) 推导塑性乘子 \(\dot \gamma\) 与应变增量 \(\dot \varepsilon\) 的关系。
+
+(3) 推导弹塑性切线模量 \(E_t = \dot \sigma / \dot \varepsilon\)。
+
+(4) 若给定 \(E = 200\,\text{GPa}\)，\(\sigma_Y = 200\,\text{MPa}\)，\(K = 20\,\text{GPa}\)，计算当应力达到 \(300\,\text{MPa}\) 时的弹塑性切线模量。
+\end{question}
+\begin{solution}
+   (1) 弹性本构、塑性流动法则和一致性条件
+
+   弹性本构关系：\( d\sigma = E \, (d\varepsilon - d\varepsilon^p) \)
+
+   塑性流动法则（关联流动）：\( d\varepsilon^p = d\lambda \, \frac{\partial f}{\partial \sigma} \)，其中 \(\frac{\partial f}{\partial \sigma} = 1\)，所以 \( d\varepsilon^p = d\lambda \)
+
+    一致性条件：在塑性加载过程中，屈服函数保持为零，即 \( f = 0 \) 且 \( df = 0 \)：
+    \[
+      df = \frac{\partial f}{\partial \sigma} d\sigma + \frac{\partial f}{\partial \varepsilon^p} d\varepsilon^p = d\sigma - K \, d\varepsilon^p = 0
+     \]
+
+(2) 塑性乘子 \(d\lambda\) 与应变增量 \(d\varepsilon\) 的关系
+   由一致性条件得：\( d\sigma = K \, d\varepsilon^p \)。  
+   代入弹性本构：\( K \, d\varepsilon^p = E (d\varepsilon - d\varepsilon^p) \)。  
+   解得：
+   \[
+   d\varepsilon^p = \frac{E}{E + K} \, d\varepsilon
+   \]
+   因为 \( d\varepsilon^p = d\lambda \)，所以：
+   \[
+   d\lambda = \frac{E}{E + K} \, d\varepsilon
+   \]
+
+(3) 弹塑性切线模量 \(E_t\)
+   将 \( d\varepsilon^p \) 代入弹性本构：
+   \[
+   d\sigma = E \left( d\varepsilon - \frac{E}{E + K} d\varepsilon \right) = \frac{EK}{E + K} \, d\varepsilon
+   \]
+   所以：
+   \[
+   E_t = \frac{d\sigma}{d\varepsilon} = \frac{EK}{E + K}
+   \]
+
+(4) 数值计算
+   \( E = 200\,\text{GPa} = 200 \times 10^3\,\text{MPa} \)，\( K = 20\,\text{GPa} = 20 \times 10^3\,\text{MPa} \)：
+   \[
+   E_t = \frac{200 \times 10^3 \times 20 \times 10^3}{200 \times 10^3 + 20 \times 10^3} = \frac{4 \times 10^9}{220 \times 10^3} \approx 18181.8\,\text{MPa} = 18.18\,\text{GPa}
+   \]
+   当应力达到 \(300\,\text{MPa}\) 时，材料已屈服，但线性硬化的切线模量为常数。 
+\end{solution}
