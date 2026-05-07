@@ -58,15 +58,13 @@
 % ---------- 段落设置 ----------
 % \baselineskip already defined by LaTeX, use directly
 %\setlength{\baselineskip}{21pt}
-
-% ---------- 题目计数器 ----------
-\newcounter{question}
-
-% ---------- 纸张设置 ----------
-\def\figwidth{0.5\textwidth}
+\setlength{\parskip}{12pt}
+\setlength{\parindent}{0pt}
 
 % ---------- question 环境 ----------
 % 参数 #1：非答案模式下题目底部留白比例
+\newcounter{question}
+\renewcommand{\thequestion}{\chinese{question}、}
 \NewEnviron{question}[1]{
 \ifsolution
 \parbox{\textwidth}{
@@ -102,34 +100,38 @@
 % ---------- page1 环境 ----------
 \NewEnviron{page1}{
 \ifsolution
-\centerline{\fontsize{16pt}{\baselineskip}\selectfont \textbf{华侨大学\examtype 考试卷答案}}
+    \makebox[\textwidth]{\fontsize{16pt}{\baselineskip}\selectfont \textbf{华侨大学\examtype 考试卷答案}}
 \else
-\centerline{\fontsize{16pt}{\baselineskip}\selectfont \textbf{华侨大学\examtype 考试卷（第\examversion{}卷）}}
+    \makebox[\textwidth]{\fontsize{16pt}{\baselineskip}\selectfont \textbf{华侨大学\examtype 考试卷}}
 \fi
+
+\makebox[\textwidth]{\year 学年第\semester 学期（\examversion）}
+
+\makebox[0.3\textwidth][l]{学院\uline{\hfill\college\hfill}}
+\makebox[0.4\textwidth][c]{课程名称\uline{\hfill\course\hfill}}
+\makebox[0.3\textwidth][fr]{考试日期\uline{\hfill\date\hfill}}
 
 \ifsolution
 \BODY
 \else
-\vfill
-\makeatletter
-\underline{\hspace{3cm}}\quad\underline{\hspace{2cm}}\quad\underline{\hspace{2.5cm}}\par
-课程\underline{\hspace{2.8cm}}\quad 学期\underline{\hspace{1.5cm}}\quad 日期\underline{\hspace{2cm}}
-\vfill
-\underline{\hspace{3cm}}\quad\underline{\hspace{3cm}}\quad\underline{\hspace{3cm}}\par
-姓名\underline{\hspace{2.8cm}}\quad 学号\underline{\hspace{2.8cm}}\quad 专业\underline{\hspace{2.8cm}}
-\vfill
+\makebox[0.22\textwidth][l]{姓名\uline{\hfill}}
+\makebox[0.22\textwidth][l]{专业\uline{\hfill}}
+\makebox[0.22\textwidth][l]{学号\uline{\hfill}}
+\makebox[0.34\textwidth][l]{任课教师姓名\uline{\hfill}}
+
+\framebox[15cm][l]{\parbox{\textwidth}{
 {
     \renewcommand{\arraystretch}{1.5}
-    \begin{tabularx}{14.5cm}[t]{|*7{>{\centering\arraybackslash}X|}}
+    \begin{tabularx}{14.57cm}[t]{|*7{>{\centering\arraybackslash}X|}}
     \hline
-    \textbf{题号} & 一 & 二 & 三 & 四 & 五 & 总分 \\
+    \textbf{题\hspace{12pt}号} & 一 & 二 & 三 & 四 & 五 & 总分 \\
     \hline
-    \textbf{得分} & & & & & & \\
+    \textbf{得\hspace{12pt}分} & & & & & & \\
     \hline
     \end{tabularx}
 }
-\par\vfill
 \BODY
+}}
 \fi
 }
 
