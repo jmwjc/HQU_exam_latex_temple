@@ -8,6 +8,10 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{hqu-exam}[2026/05/06 HQU Exam Template]
 
+% ---------- 条件编译开关 ----------
+\newif\ifsolution
+\solutionfalse
+
 % ---------- 选项 ----------
 \DeclareOption{graduate}{
     \def\examtype{研究生}
@@ -42,10 +46,6 @@
 \RequirePackage{environ}
 \RequirePackage{xeCJK,ctex}
 \RequirePackage{amsmath,amsfonts,amssymb}
-
-% ---------- 条件编译开关 ----------
-\newif\ifsolution
-\solutionfalse
 
 % ---------- 字体设置 ----------
 \setmainfont{Times New Roman}
@@ -83,6 +83,7 @@
     \thequestion \hangindent = 24pt \BODY
 }}
 \fi
+\par
 }
 
 % ---------- solution 环境 ----------
